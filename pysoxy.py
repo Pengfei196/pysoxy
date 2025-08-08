@@ -10,7 +10,7 @@ import select
 from struct import pack, unpack
 # System
 import traceback
-from threading import Thread, activeCount
+from threading import Thread, active_count
 from signal import signal, SIGINT, SIGTERM
 from time import sleep
 import sys
@@ -296,7 +296,7 @@ def main():
     signal(SIGINT, exit_handler)
     signal(SIGTERM, exit_handler)
     while not EXIT.get_status():
-        if activeCount() > MAX_THREADS:
+        if active_count() > MAX_THREADS:
             sleep(3)
             continue
         try:
